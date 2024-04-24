@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include "student.h"
+#include "tree.h"
+#define ADD tree->add
+#define SSS(arg1, arg2) student_input_with_file(arg1, arg2)
+const int STUDENTCOUNT = 3;
+char NewGroup[10];
+
+int main ()  {
+    FILE* file= fopen("file.txt", "w");
+    struct Student* student = malloc(sizeof(struct Student));
+    //student = student_input(student);
+    student = SSS(student, file);
+    struct Tree* tree = (struct Tree*) tree_init(student);
+    struct Student* value = malloc(sizeof(struct Student));
+    //value = student_input(value);
+    value = SSS(value, file);
+    ADD(tree, value);
+    struct Student* valuenew = malloc(sizeof(struct Student));
+    //valuenew = student_input(valuenew);
+    valuenew = SSS(valuenew, file);
+    ADD(tree, valuenew);
+    //read_file_with_tree(file);
+    //tree->print(tree);
+    printf ("Which group's ExcellentStudent do u want to see? \n");
+    scanf ("%s", &NewGroup);
+    tree->get(tree, NewGroup);
+    fclose(file);
+}
