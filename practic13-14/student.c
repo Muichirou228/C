@@ -2,11 +2,6 @@
 // Created by 79627 on 01.04.2024.
 //
 #include "student.h"
-
-//
-// Created by 79627 on 01.04.2024.
-//
-#include "student.h"
 void* student_input
         (void* stud){
     struct Student* tmp = stud;
