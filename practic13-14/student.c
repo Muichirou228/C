@@ -34,8 +34,8 @@ void* student_print (void* student)
 }
 
 void* student_input_with_file (void* stud, FILE* file) {
+    //file = fopen("file.txt", "w");
     struct Student* tmp = stud;
-    //fopen("file.txt", "w");
     printf("Please insert information about first name, second name, sex, group, Notes (math, physic, chemie), age and ID:\n");
     scanf ("%s", tmp->name);
     fprintf (file, tmp->name );
@@ -65,7 +65,7 @@ void* student_input_with_file (void* stud, FILE* file) {
     fprintf (file, "%d", tmp->jourN);
     fprintf (file, "\n");
     tmp->print = student_print;
-    //fclose(file);
+    //fclose(file)
     return tmp;
 
 }
