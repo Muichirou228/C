@@ -64,12 +64,9 @@ void* tree_get_5(void* tree, char NewGroup[10]){
 
 void* read_file_with_tree (FILE* file) {
     char word[100];
-    fopen("file.txt", "r");
+    file = fopen("file.txt", "r");
     while (fscanf(file, "%s", word) == 1) {
         printf("%s\n", word);
     }
     fclose(file);
 }
-
-
-
