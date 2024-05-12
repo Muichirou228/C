@@ -1,5 +1,3 @@
-
-
 //
 // Created by 79627 on 01.04.2024.
 //
@@ -74,11 +72,41 @@ void* read_file_with_tree (FILE* file) {
 }
 
 
-void *read_binary_file_with_tree (FILE* file) {
+void *read_binary_file_and_in_tree (struct Tree* tree) {
+    int stack_size;
     char word[100];
-    file = fopen("file.bin", "rb");
-    while (fscanf(file, "%s", word) == 1) {
-        printf("%s\n", word);
+    FILE* file = fopen("file.bin", "rb");
+    struct Student* student;
+    for (int i = 0; i < 2; i++) {
+        tree_add(tree,read_binary_file_and_in_student(file));
     }
     fclose(file);
+    return NULL;
+}
+
+void* read_binary_file_and_in_student (FILE* file) {
+    struct Student* student = malloc(sizeof(struct Student));
+    int tmpsize;
+    fread(&tmpsize, sizeof(int), 1 , file);
+    fread(student->name, sizeof(char), tmpsize, file);
+    student->name[tmpsize] = '\0';
+
+    fread(&tmpsize, sizeof(int), 1, file);
+    fread(student->fam, sizeof(char), tmpsize, file);
+    student->fam[tmpsize] = '\0';
+
+    fread(&tmpsize, sizeof(int), 1, file);
+    fread(student->sex, sizeof(char), tmpsize, file);
+    student->sex[tmpsize] = '\0';
+
+    fread(&tmpsize, sizeof(int), 1, file);
+    fread(student->group, sizeof(char), tmpsize, file);
+    student->group[tmpsize] = '\0';
+
+    fread(&student->ChemN, sizeof(int), 1,  file);
+    fread(&student->PhysN, sizeof(int), 1,  file);
+    fread(&student->MathN, sizeof(int), 1,  file);
+    fread(&student->yo, sizeof(int), 1,  file);
+    fread(&student->jourN, sizeof(int), 1,  file);
+    return student;
 }
