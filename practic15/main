@@ -9,7 +9,9 @@
 char NewGroup[10];
 
 int main ()  {
-    FILE* file = fopen("file.bin", "wb");
+
+    // WRITE PART
+    /*FILE* file = fopen("file.bin", "wb");
     struct Student* student = malloc(sizeof(struct Student));
     //student = student_input(student);
     student = SIWF(student, file);
@@ -22,11 +24,18 @@ int main ()  {
     //valuenew = student_input(valuenew);
     valuenew = SIWF(valuenew, file);
     ADD(tree, valuenew);
+    tree->print(tree);
+    fclose(file);*/
+
+
+    // READ IN STUDENT PART
+    struct Student* student;
+    FILE* file = fopen("file.bin", "rb");
+    student = read_binary_file_and_in_student(file);
+    student_print(student);
     fclose(file);
-    read_binary_file_with_tree(file);
-    //tree->print(tree);
-    printf ("Which group's ExcellentStudent do u want to see? \n");
-    scanf ("%s", &NewGroup);
-    tree->get(tree, NewGroup);
+    //printf ("Which group's ExcellentStudent do u want to see? \n");
+    //scanf ("%s", &NewGroup);
+    //tree->get(tree, NewGroup);/*
 
 }
