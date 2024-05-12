@@ -26,7 +26,8 @@ void* tree_get_5(void* tree, char NewGroup[10]);
 
 void* read_file_with_tree (FILE* file);
 
-void* read_binary_file_with_tree (FILE* file);
+void *read_binary_file_and_in_tree (struct Tree* tree);
+
+void* read_binary_file_and_in_student (FILE* file);
 
 #endif //UNTITLED_TREE_H
-
