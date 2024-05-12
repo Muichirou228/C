@@ -6,6 +6,7 @@
 #define UNTITLED_STUDENT_H
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 struct Student
 {
     char fam[20];
@@ -29,4 +30,3 @@ void* student_input_with_file (void* stud, FILE* file);
 void* student_input_with_binary_file (void* stud, FILE* file);
 
 #endif //UNTITLED_STUDENT_H
-
