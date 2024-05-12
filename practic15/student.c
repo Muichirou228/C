@@ -38,36 +38,36 @@ void* student_input_with_file (void* stud, FILE* file) {
     struct Student* tmp = stud;
     printf("Please insert information about first name, second name, sex, group, Notes (math, physic, chemie), age and ID:\n");
     scanf ("%s", tmp->name);
-    fprintf (file, tmp->name );
-    fprintf (file, "\n");
+    int length = strlen(tmp->name);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite (tmp->name, sizeof(char), length, file);
     scanf ("%s", tmp->fam);
-    fprintf (file, tmp->fam);
-    fprintf (file, "\n");
+    length = strlen(tmp->fam);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite (tmp->fam, sizeof(char), length, file);
     scanf ("%s", tmp->sex);
-    fprintf (file, tmp->sex);
-    fprintf (file, "\n");
+    length = strlen(tmp->sex);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite(tmp->sex, sizeof(char), length, file);
+
     scanf ("%s", tmp->group);
-    fprintf (file, tmp->group);
-    fprintf (file, "\n");
+    length = strlen(tmp->group);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite(tmp->group, sizeof(char), length, file);
+
     scanf ("%d", &tmp->MathN);
     fprintf (file, "%d", tmp->MathN);
-    fprintf (file, "\n");
     scanf ("%d", &tmp->PhysN);
     fprintf (file, "%d", tmp->PhysN);
-    fprintf (file, "\n");
     scanf ("%d", &tmp->ChemN);
     fprintf (file, "%d", tmp->ChemN);
-    fprintf (file, "\n");
     scanf ("%d", &tmp->yo);
     fprintf (file, "%d", tmp->yo);
-    fprintf (file, "\n");
     scanf ("%d", &tmp->jourN);
     fprintf (file, "%d", tmp->jourN);
-    fprintf (file, "\n");
     tmp->print = student_print;
     //fclose(file)
     return tmp;
-
 }
 
 
@@ -77,32 +77,33 @@ void* student_input_with_binary_file (void* stud, FILE* file) {
     struct Student* tmp = stud;
     printf("Please insert information about first name, second name, sex, group, Notes (math, physic, chemie), age and ID:\n");
     scanf ("%s", tmp->name);
-    fprintf (file, tmp->name);
-    fprintf (file, "\n");
+    int length = strlen(tmp->name);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite (tmp->name, sizeof(char), length, file);
     scanf ("%s", tmp->fam);
-    fprintf (file, tmp->fam);
-    fprintf (file, "\n");
+    length = strlen(tmp->fam);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite (tmp->fam, sizeof(char), length, file);
     scanf ("%s", tmp->sex);
-    fprintf (file, tmp->sex);
-    fprintf (file, "\n");
+    length = strlen(tmp->sex);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite(tmp->sex, sizeof(char), length, file);
+
     scanf ("%s", tmp->group);
-    fprintf (file, tmp->group);
-    fprintf (file, "\n");
+    length = strlen(tmp->group);
+    fwrite(&length, sizeof(int), 1, file);
+    fwrite(tmp->group, sizeof(char), length, file);
+
     scanf ("%d", &tmp->MathN);
-    fprintf (file, "%d", tmp->MathN);
-    fprintf (file, "\n");
+    fwrite (&tmp->MathN, sizeof(int), 1, file);
     scanf ("%d", &tmp->PhysN);
-    fprintf (file, "%d", tmp->PhysN);
-    fprintf (file, "\n");
+    fwrite (&tmp->PhysN, sizeof(int), 1, file);
     scanf ("%d", &tmp->ChemN);
-    fprintf (file, "%d", tmp->ChemN);
-    fprintf (file, "\n");
+    fwrite (&tmp->ChemN, sizeof(int), 1, file);
     scanf ("%d", &tmp->yo);
-    fprintf (file, "%d", tmp->yo);
-    fprintf (file, "\n");
+    fwrite (&tmp->yo, sizeof(int), 1, file);
     scanf ("%d", &tmp->jourN);
-    fprintf (file, "%d", tmp->jourN);
-    fprintf (file, "\n");
+    fwrite (&tmp->jourN, sizeof(int), 1, file);
     tmp->print = student_print;
     //fclose(file)
     return tmp;
